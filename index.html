@@ -5,7 +5,7 @@
 
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="description" content="GifTastic">
 	<meta name="author" content="Sal Giani">
 
@@ -25,6 +25,8 @@
 
 	<!-- Make final css adjustments with personal stylesheet -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!--webicon-->
+	<link rel="shortcut icon" href="assets/images/salgianidotcom.png" type="image/x-icon"></link>
 
 </head>
 
@@ -48,9 +50,9 @@
 	    	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      		<form class="navbar-form navbar-right" id="tvShowForm">
 	        		<div class="form-group">
-	          			<input type="text" class="form-control" id="searchPlace" placeholder="...other destinations">
+	          			<input type="text" class="form-control" id="searchPlace" placeholder="... add another place">
 	        		</div>
-	        		<button type="submit" id="addPlace" class="btn btn-primary">Search</button>
+	        		<button type="submit" id="addPlace" class="btn btn-primary">Add</button>
 	      		</form>
 	    	</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -63,10 +65,18 @@
 		</div>
 		<!-- Two columns - left one has buttons, right one has gifs -->
 		<div class="row">
-			<div class="col-md-3 btn-group-horizontal" role="group" id="buttonsBar">buttonsBar</div>
-			<div class="col-md-9">
-				<div class="row" id="gifsWindow"></div>
+			<div class="col-md-3">
+					<span>Potential Places to Visit</span>
 			</div>
+				<div class="col-md-9">
+						<span>Current weather at your selected place...</span>
+						<span class="weather"></span>
+				</div>
+
+				<div class="col-md-3 btn-group-horizontal" role="group" id="buttonsBar"></div>
+				<div class="col-md-9">
+					<div class="row" id="gifsWindow"></div>
+				</div>
 		</div>
 
 

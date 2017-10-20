@@ -17,6 +17,7 @@ $(document).ready(function() {
 // renderButtons: function to render the buttons
 // displayGifs: function to display gifs that correspond to button click
 // and also to toggle between animated and still
+var placeToDisplay;
 var giftasticObj = {
 	places: ["New York City", "Chicago", "Las Vegas", "San Francisco", "London", "Paris", "Rome", "Berlin", "Madrid", "Amsterdam"],
 	currentSelection: "",
@@ -45,9 +46,9 @@ var giftasticObj = {
 	displayGifs: function() {
 		console.log(this.currentSelection);
 		// first build the ajax query based on current button clicked
-		var tvShowToDisplay = this.currentSelection;
+		 placeToDisplay = this.currentSelection;
 		// use an &limit of 12 to grab 12 images
-		var queryURL = this.giphyApiUrl + "&q=" + tvShowToDisplay + "&limit=12&api_key=" + this.giphyApiKey;
+		var queryURL = this.giphyApiUrl + "&q=" + placeToDisplay + "&limit=12&api_key=" + this.giphyApiKey;
 
 		// make the ajax query and store the response
 		$.ajax({url: queryURL, method: "GET"}).done(function(response) {
@@ -108,8 +109,9 @@ var giftasticObj = {
 				}
 
 			});
-
+			
 		});
+		getWeather(placeToDisplay)
 	}
 };
 
@@ -139,3 +141,38 @@ giftasticObj.renderButtons();
 
 // end document.ready function
 });
+
+// This is our API key. Add your own API key between the ""
+function getWeather (placeToDisplay){ 
+	var APIKey = "75b0db7b117ce987142e5a64659b3812";
+
+	// Here we are building the URL we need to query the database
+	var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + placeToDisplay + "&appid=" + APIKey;
+
+	// We then created an AJAX call
+	$.ajax({
+	  url: queryURL,
+	  method: "GET"
+	}).done(function(response) {
+
+	//   // Create CODE HERE to Log the queryURL
+	  console.log(queryURL,"this is weather");
+	//   // Create CODE HERE to log the resulting object
+	//   console.log(response);
+	//   // Create CODE HERE to transfer content to HTML
+	//   document.write("<p></p>"+ (Math.floor(response.main.temp - 273.15) * 1.80 + 32))
+	//   // Create CODE HERE to calculate the temperature (converted from Kelvin)
+	//   // Hint: To convert from Kelvin to Fahrenheit: F = (K - 273.15) * 1.80 + 32
+	//   // Create CODE HERE to dump the temperature content into HTML
+	//   document.write("<p></p>"+ response.wind.speed)
+	//   document.write("<p></p>"+ response.main.humidity)
+	//   document.write("<p></p>"+ response.clouds.all)
+		$(".weather").empty()
+		$(".weather").append("<span class='txt'>" + (Math.round(response.main.temp - 273.15) * 1.80 + 32)+"°, "+"</span>");
+		$(".weather").append("<span class='txt'>" + response.main.humidity+"% "+ "Humidity, "+"</span>");
+		$(".weather").append("<span class='txt'>" + (Math.round(response.wind.speed * 2.23694) + " mph" + "</span>"));
+		
+		
+		
+	});
+}
