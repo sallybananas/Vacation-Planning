@@ -1,3 +1,8 @@
+
+$(window).on("load",function(){        
+	$('#myModal').modal('show');
+	});  
+			
 // GifTastic Javascript Engine
 
 // begin document.ready function
@@ -170,7 +175,7 @@ function getWeather (placeToDisplay){
 		$(".weather").empty()
 		$(".weather").append("<span class='txt'>" + (Math.round(response.main.temp - 273.15) * 1.80 + 32)+"°, "+"</span>");
 		$(".weather").append("<span class='txt'>" + response.main.humidity+"% "+ "Humidity, "+"</span>");
-		$(".weather").append("<span class='txt'>" + (Math.round(response.wind.speed * 2.23694) + " mph" + "</span>"));
+		$(".weather").append("<span class='txt'>" + "Wind is " + (Math.round(response.wind.speed * 2.23694) + " mph" + "</span>"));
 		
 		
 		

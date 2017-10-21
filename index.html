@@ -32,6 +32,36 @@
 
 <body>
 
+	<!-- Modal that opens on page load -->
+		 	<!-- <script>
+				$(window).load(function(){        
+					$('#myModal').modal('show');
+					});  
+			</script> -->
+			  
+			  <div id="myModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+				  <!-- Modal content-->
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">Hi there! Lets do some vacation planning research</h4>
+					</div>
+					<div class="modal-body">
+					  <p>On this site you will see a group of buttons, in blue, with the names of possible vacation destinations. You can click on those already provided, or use the search bar, in the top right hand corner and add another destination not included.</p>
+					  <p>Additionally, you will be provided with the current weather information for the place selected. Hopefully, this can help you decide on your preferred location. </p>
+					  <p>Once you click a place you will see 12 animated gifs which will give you some insight into the given location. Perhaps you'll see landmarks and well known locations, or maybe you'll be surprised.</p>
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				  </div>
+			  
+				</div>
+			  </div>
+			 
+	<!-- End Modal Code -->
+
 	<!-- first the navbar -->
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -60,21 +90,39 @@
 	
 	<!-- begin the bootstrap container -->
 	<div class="container">
-		<div class="vp">
+		<!-- <div class="vp">
 		<img src="assets/images/vp.png" class="img-fluid" alt="Responsive image">
-		</div>
+		</div> -->
+
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div class="carousel-inner">
+				  <div class="carousel-item active">
+					<img class="first-slide" src="assets/images/vp.png" width="100%" height="auto" alt="First slide">
+					<div class="container">
+					  <div class="carousel-caption d-none d-md-block text-left">
+						<!-- <h1>Hey there!</h1>
+						<p id="p">Lets plan a vacation.</p> -->
+					  </div>
+					</div>
+				  </div>
+				</div>
+			</div>
+
 		<!-- Two columns - left one has buttons, right one has gifs -->
 		<div class="row">
-			<div class="col-md-3">
-					<span>Potential Places to Visit</span>
-			</div>
-				<div class="col-md-9">
-						<span>Current weather at your selected place...</span>
-						<span class="weather"></span>
-				</div>
+			<div class="col-md-3"></div>
+				<div class="col-md-9"></div>
 
-				<div class="col-md-3 btn-group-horizontal" role="group" id="buttonsBar"></div>
+				<div class="col-md-3 btn-group-horizontal">
+					<span>Potential Places to Visit</span>
+					<hr>
+					<div role="group" id="buttonsBar">
+					</div>
+				</div>
 				<div class="col-md-9">
+					<span>Current weather at your selected place...</span>
+					<span class="weather"></span>
+					<hr>
 					<div class="row" id="gifsWindow"></div>
 				</div>
 		</div>
