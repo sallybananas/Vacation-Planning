@@ -16,7 +16,7 @@ $(document).ready(function() {
 // elements of the object include the following
 // places: array of all places used to populate buttons
 // currentSelection: the button the user pressed (if needed)
-// userInput: the places the user entered via the form
+// input: the places the user entered via the form
 // giphyApiUrl: the base url for giffy api access
 // giphyApiKey: public beta key for non-production giphy usage 
 // renderButtons: function to render the buttons
@@ -26,7 +26,7 @@ var placeToDisplay;
 var giftasticObj = {
 	places: ["New York City", "Chicago", "Las Vegas", "San Francisco", "London", "Paris", "Rome", "Berlin", "Madrid", "Amsterdam"],
 	currentSelection: "",
-	userInput: "",
+	input: "",
 	giphyApiUrl: "https://api.giphy.com/v1/gifs/search?",
 	giphyApiKey: "iHfLD40zAGGpcIFpmFsXhySDc9f8uday",
 	renderButtons: function() {
@@ -127,12 +127,12 @@ var giftasticObj = {
 // add an on-click for the form at the top of the
 // page so user can add additional destinations / buttons
 $("#addPlace").on("click", function() {
-	giftasticObj.userInput = $("#searchPlace").val().trim();
+	giftasticObj.input = $("#searchPlace").val().trim();
 	// ignore submit button click if nothing has been entered
 	// because we don't want to create empty buttons
-	if (giftasticObj.userInput != "") {
+	if (giftasticObj.input != "") {
 		// add the place to the array and render buttons again
-		giftasticObj.places.unshift(giftasticObj.userInput);
+		giftasticObj.places.unshift(giftasticObj.input);
 		giftasticObj.renderButtons();
 	}
 	// reset the form
